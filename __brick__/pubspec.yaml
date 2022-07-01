@@ -1,0 +1,65 @@
+name: bruce_brick
+description: Brick project of my boilerplate code
+publish_to: none
+version: 1.0.0+1
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
+environment:
+  sdk: '>=2.17.0-0 <3.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  universal_html: ^2.0.8
+  path_provider: ^2.0.11
+  hexcolor: ^2.0.7
+  flutter_launcher_icons: ^0.9.3
+  logging: ^1.0.2
+  http: ^0.13.4
+  decimal: ^2.2.0
+  flutter_spinkit: ^5.1.0
+  animations: ^2.0.3
+  json_annotation: ^4.5.0
+  json_serializable: ^6.2.0
+  auto_size_text: ^3.0.0
+  hive: ^2.2.2
+  page_transition: ^2.0.9
+  shimmer: ^2.0.0
+  intl: ^0.17.0
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  msix: ^3.6.2
+  flutter_lints: ^2.0.1
+  build_runner: ^2.1.11
+flutter_icons:
+  android: true
+  windows: true
+  ios: true # can specify file name here e.g. "My-Launcher-Icon"
+  macOs: true
+  remove_alpha_ios: true
+  image_path: "assets/icon/icon.png"
+  #adaptive_icon_background: "#FFFFFF" # can use image / color only available for Android 8.0 devices and above
+  #adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png" # only available for Android 8.0 devices and above
+  #image_path_android: "assets/images/icon-710x599-android.png"
+  #image_path_ios: "assets/images/icon-1024x1024.png"
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+  #fonts:
+msix_config:
+  display_name: $name
+  publisher_display_name: $name
+  publisher: $name
+  identity_name: $name
+  msix_version: 1.0.0.0
+  icons_background_color: "#ffffff"
+  architecture: x64
+  logo_path: "assets/icon/icon.png"
+  #capabilities: "internetClient,location,microphone"
