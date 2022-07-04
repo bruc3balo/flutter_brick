@@ -1,24 +1,14 @@
-import 'package:bruce_brick/utils/resusables.dart';
 import 'package:flutter/material.dart';
+import '../utils/styles/styles.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return const SplashPage();
-  }
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
-
-  @override
-  State<SplashPage> createState() => _SplashPageState();
-}
-
-class _SplashPageState extends State<SplashPage> {
-
+class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {

@@ -1,34 +1,34 @@
-class Validation {
+class MyValidation {
 
-  static bool _isNullOrEmpty(String? s) {
+  static bool isNullOrEmpty(String? s) {
     return s == null || s.isEmpty;
   }
 
-  static bool _hasAlphabetCharacters(String s) {
+  static bool hasAlphabetCharacters(String s) {
     return s.contains(RegExp(r'[A-Z]',caseSensitive: false));
   }
 
-  static bool _hasSpecialCharacters(String s) {
+  static bool hasSpecialCharacters(String s) {
     return s.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
   }
 
-  static bool _hasWhitespaceCase(String s) {
+  static bool hasWhitespaceCase(String s) {
     return s.contains(" ");
   }
 
-  static bool _hasLowerCase(String s) {
+  static bool hasLowerCase(String s) {
     return s.contains(RegExp(r'[a-z]',caseSensitive: true));
   }
 
-  static bool _hasUpperCase(String s) {
+  static bool hasUpperCase(String s) {
     return s.contains(RegExp(r'[A-Z]',caseSensitive: true));
   }
 
-  static bool _isOfLength(String s, int min, int max) {
+  static bool isOfLength(String s, int min, int max) {
     return s.length >= min && s.length <= max;
   }
 
-  static bool _hasDigit(String s) {
+  static bool hasDigit(String s) {
     for (int i = 0; i < s.length - 1; i++) {
       if (isNumeric(s[i])) {
         return true;

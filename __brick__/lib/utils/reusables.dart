@@ -1,12 +1,7 @@
-import 'dart:ui';
-
 import 'package:bruce_brick/utils/mplatform.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:universal_html/html.dart' as html;
-import 'package:shimmer/shimmer.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 
 class MyVariables {
@@ -19,19 +14,20 @@ class MyVariables {
   static const String splashScreenRoute = "/";
   static const String splashScreen = "Splash";
   static const Duration transitionDuration = Duration(milliseconds: 1500);
+  static const double mobileSize = 900; //715
+
 
   //non-const
   static bool mobileView = false;
   static double screenHeight = 0.0;
   static double screenWidth = 0.0;
-  static const double mobileSize = 900; //715
 
 }
 
 class MyMethods {
   //void
   static void killApp() {
-    if (Mplatform.current.isWeb) {
+    if (Mplatform.isWeb()) {
       if(html.window.closed != null) {
         if(html.window.closed!) {
           html.window.close;
@@ -46,6 +42,7 @@ class MyMethods {
   static DateTime getMyDateTime(DateTime dateTime) {
     return dateTime.toLocal();
   }
+
   static List<DateTime> getDaysInBetween(DateTime? startDate, DateTime? endDate) {
     List<DateTime> days = [];
 
@@ -138,95 +135,13 @@ class MyMethods {
 
 }
 
-class MyThemes {
-
-  static ThemeData lightTheme () {
-    return ThemeData(
-      scaffoldBackgroundColor: MyPalette.white
-    );
-  }
-
-  static ThemeData darkTheme () {
-    return ThemeData(
-      scaffoldBackgroundColor: MyPalette.black
-    );
-  }
-
-  static ValueNotifier<MyThemeModes> currentTheme = ValueNotifier(ThemeMode.system.name == ThemeMode.light.name ? MyThemeModes.light : MyThemeModes.dark);
-
-}
-
-class MyWidgets {
-  static LinearGradient shimmerGradient =  LinearGradient(
-      colors: [MyPalette.grey, MyPalette.silver, MyPalette.black,],
-      begin: const FractionalOffset(0.0, 0.0),
-      end: const FractionalOffset(1.0, 0.0),
-      stops: const [0.0, 0.5, 1.0],
-      tileMode: TileMode.mirror,
-      transform: const GradientRotation(0.7853982)
-  );
-  static Widget showShimmer(AsyncSnapshot snapshot, Widget shimmerWidget, Widget widgetWithData, Widget onFailedToGetDataWidget, Widget noFutureWidget) {
-    switch(snapshot.connectionState) {
-      case ConnectionState.none:
-        return noFutureWidget;
-      case ConnectionState.waiting:
-      case ConnectionState.active:
-        if(snapshot.hasData) {
-          return widgetWithData;
-        } else {
-          return Center(
-            child: Shimmer(
-              gradient: shimmerGradient,
-              child: shimmerWidget,
-            ),
-          );
-        }
-      case ConnectionState.done:
-        if(snapshot.hasData) {
-          return widgetWithData;
-        } else {
-          return onFailedToGetDataWidget;
-        }
-    }
-  }
-  static ScrollBehavior getNoScrollBehaviour(BuildContext context) {
-    return ScrollConfiguration.of(context).copyWith(
-        scrollbars: false,
-        dragDevices: PointerDeviceKind.values.toSet(),
-        physics: const BouncingScrollPhysics());
-  }
-}
-
-class MyPalette {
-  static Color get silver => HexColor("#C0C0C0");
-  static Color get grey => Colors.grey;
-  static Color get black => Colors.black;
-  static Color get red => Colors.red;
-  static Color get green => Colors.green;
-  static Color get blue => Colors.blue;
-  static Color get white => Colors.white;
-  static Color connectionStateColor(AsyncSnapshot snapshot) {
-    switch (snapshot.connectionState) {
-      case ConnectionState.none:
-        return grey;
-      case ConnectionState.waiting:
-        return snapshot.hasError ? red : black;
-      case ConnectionState.active:
-        return green;
-      case ConnectionState.done:
-        return blue;
-    }
-  }
-
-}
-
-class SettingsList {
+class MySettingsList {
   String title;
   String subTitle;
   Widget icon;
   final void Function() onPressed;
 
-  SettingsList(this.title, this.subTitle, this.icon, this.onPressed);
+  MySettingsList(this.title, this.subTitle, this.icon, this.onPressed);
 }
 
 enum MyMonths {
@@ -249,20 +164,3 @@ enum MyMonths {
   static List<String> get allMonths => MyMonths.values.map((e) => e.title).toList(growable: false);
 }
 
-enum MyThemeModes {
-
-  light("Light"),
-  dark("Dark");
-
-  final String title;
-  const MyThemeModes(this.title);
-
-  ThemeData get data {
-    switch(this) {
-      case MyThemeModes.light:
-        return MyThemes.lightTheme();
-      case MyThemeModes.dark:
-        return MyThemes.darkTheme();
-  }
-}
-}

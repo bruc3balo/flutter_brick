@@ -29,35 +29,33 @@ enum Mplatform {
       }
     }
   }
-}
 
-extension MplaformExtension on Mplatform {
-
-  bool get isWeb {
-    return Mplatform.current == Mplatform.web;
+  static bool isWeb () {
+    return current == web;
   }
 
-  bool get isAndroid {
-    return Mplatform.current == Mplatform.android;
+  static bool isAndroid () {
+    return current ==android;
   }
 
-  bool get isIos {
-    return Mplatform.current == Mplatform.ios;
+  static bool isIos () {
+    return current == ios;
   }
 
-  bool get isMacOs{
-    return Mplatform.current == Mplatform.macos;
+  static bool isMacOs() {
+    return current == macos;
   }
 
-  bool get isWindows {
-    return Mplatform.current == Mplatform.windows;
+  static bool isWindows () {
+    return current == windows;
   }
 
-  bool get isLinux {
-    return Mplatform.current == Mplatform.linux;
+  static bool isLinux () {
+    return current == linux;
   }
 
-  bool get isFuchsia {
-    return Mplatform.current == Mplatform.fuchsia;
+  static bool isFuchsia () {
+    return current == fuchsia;
   }
+
 }
