@@ -5,6 +5,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 
+
 class MyPalette {
   static Color get silver => HexColor("#C0C0C0");
   static Color get grey => Colors.grey;
@@ -13,7 +14,7 @@ class MyPalette {
   static Color get green => Colors.green;
   static Color get blue => Colors.blue;
   static Color get white => Colors.white;
-  static Color connectionStateColor(AsyncSnapshot snapshot) {
+  static Color connectionStateColor({required AsyncSnapshot snapshot}) {
     switch (snapshot.connectionState) {
       case ConnectionState.none:
         return grey;
@@ -26,7 +27,6 @@ class MyPalette {
     }
   }
 }
-
 class MyWidgets {
   static LinearGradient shimmerGradient =  LinearGradient(
       colors: [MyPalette.grey, MyPalette.silver, MyPalette.black,],
@@ -36,7 +36,7 @@ class MyWidgets {
       tileMode: TileMode.mirror,
       transform: const GradientRotation(0.7853982)
   );
-  static Widget showShimmer(AsyncSnapshot snapshot, Widget shimmerWidget, Widget widgetWithData, Widget onFailedToGetDataWidget, Widget noFutureWidget) {
+  static Widget showShimmer({required AsyncSnapshot snapshot, required Widget shimmerWidget, required Widget widgetWithData, required Widget onFailedToGetDataWidget, required Widget noFutureWidget}) {
     switch(snapshot.connectionState) {
       case ConnectionState.none:
         return noFutureWidget;
@@ -60,18 +60,48 @@ class MyWidgets {
         }
     }
   }
-  static ScrollBehavior getNoScrollBehaviour(BuildContext context) {
+  static ScrollBehavior getNoScrollBehaviour(BuildContext context,{ScrollPhysics? physics}) {
     return ScrollConfiguration.of(context).copyWith(
         scrollbars: false,
         dragDevices: PointerDeviceKind.values.toSet(),
-        physics: const BouncingScrollPhysics());
+        physics: physics ?? const BouncingScrollPhysics());
   }
   static SpinKitDualRing getRingKit ({AsyncSnapshot? snapshot}) {
-    return SpinKitDualRing(color: snapshot == null ? MyPalette.silver : MyPalette.connectionStateColor(snapshot));
+    return SpinKitDualRing(color: snapshot == null ? MyPalette.silver : MyPalette.connectionStateColor(snapshot: snapshot));
   }
 }
 
-class MyThemes {
+class MyThemes extends ValueNotifier<MyThemeModes> {
+
+  MyThemes() : super(ThemeMode.system.name == ThemeMode.light.name ? MyThemeModes.light : MyThemeModes.dark);
+
+  MyThemeModes get current => value;
+  bool get isDarkMode => value == MyThemeModes.dark;
+  bool get isLightMode => value == MyThemeModes.light;
+
+  void changeTheme({required MyThemeModes themeMode}) {
+    value = themeMode;
+  }
+
+}
+enum MyThemeModes {
+  //themes not restricted to light mode and dark mode
+  //default is system theme though
+
+  light("Light"),
+  dark("Dark");
+
+  final String title;
+  const MyThemeModes(this.title);
+
+  ThemeData get data {
+    switch(this) {
+      case MyThemeModes.light:
+        return lightTheme();
+      case MyThemeModes.dark:
+        return darkTheme();
+    }
+  }
 
   static ThemeData lightTheme () {
     return ThemeData(
@@ -85,23 +115,75 @@ class MyThemes {
     );
   }
 
-  static ValueNotifier<MyThemeModes> currentTheme = ValueNotifier(ThemeMode.system.name == ThemeMode.light.name ? MyThemeModes.light : MyThemeModes.dark);
 }
 
-enum MyThemeModes {
+class ScreenSize extends ValueNotifier<Size> {
 
-  light("Light"),
-  dark("Dark");
+  ScreenSize() : super(Size(0.0, 0.0));
 
-  final String title;
-  const MyThemeModes(this.title);
+  Size get currentMax => value;
 
-  ThemeData get data {
-    switch(this) {
-      case MyThemeModes.light:
-        return MyThemes.lightTheme();
-      case MyThemeModes.dark:
-        return MyThemes.darkTheme();
+  bool get isMobile => ScreenSizeEnums.isMobile(value.width);
+  bool get isTablet => ScreenSizeEnums.isTablet(value.width);
+  bool get isUnsupported => ScreenSizeEnums.isUnsupported(value.width);
+  bool get isDesktop => ScreenSizeEnums.isDesktop(value.width);
+
+  ScreenSizeEnums get currentSize => ScreenSizeEnums.current(value.width);
+
+  void updateSize ({required double width, required double height}) {
+    debugPrint("Size is updating");
+    value = Size(width, height);
+    debugPrint("Width is ${value.width}");
+  }
+
+}
+
+enum ScreenSizeEnums {
+  unsupported(0),
+  //todo set minimum supported size
+  mobile(320.0),
+  tablet(716.0),
+  desktop(1025.0);
+
+  final double minWidth;
+
+  const ScreenSizeEnums(this.minWidth);
+
+  static ScreenSizeEnums getFromWidth (double width) {
+    if(isMobile(width)) {
+      return mobile;
+    } else if(isTablet(width)) {
+      return tablet;
+    } else if(isDesktop(width)) {
+      return desktop;
+    } else {
+      return unsupported;
     }
   }
+
+  static bool isUnsupported (double width) {
+    return width < mobile.minWidth;
+  }
+
+  static bool isMobile (double width) {
+    return width >= mobile.minWidth && width < tablet.minWidth;
+  }
+
+  static bool isTablet (double width) {
+    return width >= tablet.minWidth && width < desktop.minWidth;
+  }
+
+  static bool isDesktop (double width) {
+    return width >= desktop.minWidth;
+  }
+
+  static ScreenSizeEnums current(double width) {
+    return getFromWidth(width);
+  }
+
 }
+
+//todo use your preferred provider
+MyThemes themeProvider = MyThemes();
+ScreenSize screenSizeProvider = ScreenSize();
+

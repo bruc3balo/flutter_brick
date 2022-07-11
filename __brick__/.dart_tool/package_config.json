@@ -188,6 +188,12 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "equatable",
+      "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/equatable-2.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.3.1",
       "packageUri": "lib/",
@@ -230,6 +236,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_native_splash",
+      "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_native_splash-2.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "flutter_spinkit",
       "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_spinkit-5.1.0",
       "packageUri": "lib/",
@@ -264,6 +276,12 @@
       "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/glob-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.15"
+    },
+    {
+      "name": "google_fonts",
+      "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/google_fonts-2.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "graphs",
@@ -342,6 +360,12 @@
       "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/json_serializable-6.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "lint",
+      "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/lint-1.8.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
     },
     {
       "name": "lints",
@@ -644,7 +668,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-07-01T00:09:42.900896Z",
+  "generated": "2022-07-11T19:11:19.915928Z",
   "generator": "pub",
   "generatorVersion": "2.18.0-190.0.dev"
 }

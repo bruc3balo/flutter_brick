@@ -13,20 +13,17 @@ class MyVariables {
   static const String unknownRoute = "/404";
   static const String splashScreenRoute = "/";
   static const String splashScreen = "Splash";
+  static const String mainScreenRoute = "/main";
+  static const String mainScreen = "Main";
   static const Duration transitionDuration = Duration(milliseconds: 1500);
-  static const double mobileSize = 900; //715
-
-
-  //non-const
-  static bool mobileView = false;
-  static double screenHeight = 0.0;
-  static double screenWidth = 0.0;
-
+  static const double mobileWidth = 900; //715
 }
 
 class MyMethods {
+
   //void
   static void killApp() {
+    debugPrint("Closing application");
     if (Mplatform.isWeb()) {
       if(html.window.closed != null) {
         if(html.window.closed!) {
@@ -42,7 +39,6 @@ class MyMethods {
   static DateTime getMyDateTime(DateTime dateTime) {
     return dateTime.toLocal();
   }
-
   static List<DateTime> getDaysInBetween(DateTime? startDate, DateTime? endDate) {
     List<DateTime> days = [];
 
@@ -60,6 +56,7 @@ class MyMethods {
         getLastDayOfMonth(month, year), (index) => index + 1,
         growable: false);
   }
+
   //string
   static String formatDateReadable(DateTime dateTime) {
     return DateFormat.yMMMMEEEEd().add_Hms().format(getMyDateTime(dateTime.toLocal()));
@@ -72,10 +69,7 @@ class MyMethods {
     return MyMonths.values[month].name;
   }
 
-  //future
-  static bool isEven(int n) {
-    return n % 2 == 0;
-  }
+  //bool
   static bool isLeapYear(int year) {
     // flag to take a non-leap year by default
     bool isLeapYear = false;
@@ -116,6 +110,7 @@ class MyMethods {
     }
   }
 
+
   //int
   static int getIntFromMonth(String month) {
     return MyMonths.values
@@ -126,7 +121,7 @@ class MyMethods {
   static int getLastDayOfMonth(int month, int year) {
     if (month == 1) {
       return isLeapYear(year) ? 29 : 28;
-    } else if (isEven(month)) {
+    } else if (month.isEven) {
       return 30;
     } else {
       return 31;
@@ -163,4 +158,6 @@ enum MyMonths {
 
   static List<String> get allMonths => MyMonths.values.map((e) => e.title).toList(growable: false);
 }
+
+
 

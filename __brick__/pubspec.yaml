@@ -19,6 +19,7 @@ dependencies:
   path_provider: ^2.0.11
   hexcolor: ^2.0.7
   flutter_launcher_icons: ^0.9.3
+  flutter_native_splash: ^2.2.4
   logging: ^1.0.2
   http: ^0.13.4
   decimal: ^2.2.0
@@ -33,7 +34,7 @@ dependencies:
   intl: ^0.17.0
   google_fonts: ^2.3.1
   equatable: ^2.0.3
-
+  get_it: ^7.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,15 +47,31 @@ flutter_icons:
   ios: true # can specify file name here e.g. "My-Launcher-Icon"
   macOs: true
   remove_alpha_ios: true
-  image_path: "assets/icon/icon.png"
+  image_path: "assets/icon.png"
   #adaptive_icon_background: "#FFFFFF" # can use image / color only available for Android 8.0 devices and above
   #adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png" # only available for Android 8.0 devices and above
   #image_path_android: "assets/images/icon-710x599-android.png"
   #image_path_ios: "assets/images/icon-1024x1024.png"
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/icon.png
+  branding: assets/icon.png
+  color_dark: "#121212"
+  image_dark: assets/icon.png
+  branding_dark: assets/icon.png
+
+  android_12:
+    image: assets/icon.png
+    icon_background_color: "#ffffff"
+    image_dark: assets/icon.png
+    icon_background_color_dark: "#121212"
+
+  web: true
 flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/icon/
   #fonts:
 msix_config:
   display_name: $name
@@ -64,5 +81,5 @@ msix_config:
   msix_version: 1.0.0.0
   icons_background_color: "#ffffff"
   architecture: x64
-  logo_path: "assets/icon/icon.png"
+  logo_path: "assets/icon.png"
   #capabilities: "internetClient,location,microphone"

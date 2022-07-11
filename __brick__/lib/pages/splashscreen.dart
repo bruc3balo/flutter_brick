@@ -1,43 +1,46 @@
+import 'package:bruce_brick/utils/reusables.dart';
+import 'package:bruce_brick/utils/styles/styles.dart';
 import 'package:flutter/material.dart';
-import '../utils/styles/styles.dart';
+
+import '../utils/routes.dart';
 
 class SplashScreen extends StatefulWidget {
+
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
+
 }
 
 class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    MyThemes.currentTheme.addListener(() {
-      debugPrint("Value is ${MyThemes.currentTheme.value}");
-    });
+    themeProvider.addListener(printTheme);
+    Future.delayed(MyVariables.transitionDuration).then((value) => Routes.goToRouteNameBackBone(context, MyVariables.mainScreen));
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    themeProvider.removeListener(printTheme);
+    super.dispose();
+  }
+
+  void printTheme() {
+    debugPrint("Listening to theme changes");
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(onPressed: () {
-              setState(() {
-                if(MyThemes.currentTheme.value == MyThemeModes.light) {
-                    MyThemes.currentTheme.value = MyThemeModes.dark;
-                } else {
-                  MyThemes.currentTheme.value = MyThemeModes.light;
-                }
-              });
-              }, icon: Icon(MyThemes.currentTheme.value.name == MyThemeModes.light.name ? Icons.light_mode :Icons.dark_mode))
-          ],
-        ),
+        body: Image.asset("assets/icon.png",),
       ),
     );
   }
+
 }
 
 

@@ -1,3 +1,4 @@
+import 'package:bruce_brick/pages/home_page.dart';
 import 'package:bruce_brick/utils/reusables.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -27,6 +28,19 @@ class Routes {
         path: MyVariables.splashScreenRoute,
         name: MyVariables.splashScreen,
         icon: Icons.open_in_new),
+    Routes(
+        routeBuilder: () => PageTransition(
+            settings: const RouteSettings(name: MyVariables.mainScreenRoute),
+            type: PageTransitionType.size,
+            alignment: Alignment.center,
+            curve: Curves.linearToEaseOut,
+            opaque: true,
+            child: const HomePage(),
+            duration: MyVariables.transitionDuration
+        ),
+        path: MyVariables.mainScreenRoute,
+        name: MyVariables.mainScreen,
+        icon: Icons.home),
   ];
 
   static Routes getRouteByName(String name) {
