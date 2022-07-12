@@ -1,6 +1,7 @@
 name: flutter_brick
 description: Reduce sarting boilerplate code before starting your project with essential packages. First thing to do
 version: 0.1.0+1
+repository: https://github.com/bruc3balo/flutter_brick.git
 environment:
   mason: ">=0.1.0-dev.26 <0.1.0"
 
