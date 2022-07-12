@@ -2,8 +2,12 @@
 /shelf/
 /workspace.xml
 /__brick__/build
+/__brick__/.dart_tool
+/__brick__/test
 /.flutter-plugins
 /.flutter-plugins-dependencies
 /LICENSE
+/HELLO.md
+/pubspec.lock
 
 
