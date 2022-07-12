@@ -101,7 +101,7 @@ class MyMethods {
 
     return isLeapYear;
   }
-  static Future<bool> copyToClipboard(BuildContext context, String s, bool mounted) async {
+  static Future<bool> copyToClipboard(String s) async {
     try {
       await Clipboard.setData(ClipboardData(text: s));
       return true;

@@ -37,6 +37,6 @@ class MyValidation {
     return false;
   }
 
-  static isNumeric(string) => num.tryParse(string) != null;
+  static bool isNumeric(string) => num.tryParse(string) != null;
 
 }

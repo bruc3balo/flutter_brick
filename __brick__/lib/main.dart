@@ -16,7 +16,6 @@ final getIt = GetIt.instance;
 Future<void> _beforeRunApp() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-
   //logs
   if (kReleaseMode) {
     // Don't log anything below warnings in production.
@@ -25,13 +24,13 @@ Future<void> _beforeRunApp() async {
   Logger.root.onRecord.listen((record) => _handleLogs(record));
   _log.info("Starting application ${MyVariables.appName}");
 
-  //widgets
+  //web url //remove fragment from url #
   usePathUrlStrategy();
 
   //local data
   getIt.registerLazySingleton<HiveInterface>(() => Hive);
   getIt.registerLazySingleton<LocalDatabase>(() => LocalDataBaseImpl());
-  getIt<LocalDatabase>();
+  getIt<LocalDatabase>(); //init hive by getIt instance
 
   //network
   getIt.registerLazySingleton<NetworkRepository>(() => NetworkRepositoryImpl());
