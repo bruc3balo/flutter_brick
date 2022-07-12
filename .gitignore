@@ -1,4 +1,9 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+/__brick__/build
+/.flutter-plugins
+/.flutter-plugins-dependencies
+/LICENSE
+
 
