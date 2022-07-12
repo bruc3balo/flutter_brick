@@ -519,7 +519,7 @@ class NetworkResponse {
   Failure? failure;
 
   NetworkResponse({this.response, this.failure}) {
-   if(response == null && failure == null) {
+   if(!hasFailure() && !hasResponse()) {
      throw IllegalStateFailure("Response and Failure cannot both be null");
    } 
   }
@@ -547,6 +547,12 @@ class NetworkRepositoryImpl extends NetworkRepository {
     if(!(await hasConnection())) {
       return NetworkResponse(failure: ConnectionFailure(null));
     }
+
+    String? jsonBody;
+
+    if(body != null) {
+      jsonBody = jsonEncode(body);
+    }
     
     switch(requestType) {
 
@@ -564,7 +570,7 @@ class NetworkRepositoryImpl extends NetworkRepository {
         }
       case RequestType.post:
         try {
-          Response res = await post(uri,headers: headers,body: body ?? jsonEncode(body),encoding: encoding);
+          Response res = await post(uri,headers: headers,body:jsonBody,encoding: encoding);
           if(isSuccessfulResponse(res,successCodes)) {
             return NetworkResponse(response: res);
           } else {
@@ -576,7 +582,7 @@ class NetworkRepositoryImpl extends NetworkRepository {
         }
       case RequestType.put:
         try {
-          Response res = await put(uri,headers: headers,body: body ?? jsonEncode(body),encoding: encoding);
+          Response res = await put(uri,headers: headers,body: jsonBody,encoding: encoding);
           if(isSuccessfulResponse(res,successCodes)) {
             return NetworkResponse(response: res);
           } else {
@@ -588,7 +594,7 @@ class NetworkRepositoryImpl extends NetworkRepository {
         }
       case RequestType.delete:
         try {
-          Response res = await delete(uri,headers: headers,body:body ?? jsonEncode(body),encoding: encoding);
+          Response res = await delete(uri,headers: headers,body:jsonBody,encoding: encoding);
           if(isSuccessfulResponse(res,successCodes)) {
             return NetworkResponse(response: res);
           } else {
@@ -600,7 +606,7 @@ class NetworkRepositoryImpl extends NetworkRepository {
         }
       case RequestType.head:
         try {
-          Response res = await delete(uri,headers: headers,body: body ?? jsonEncode(body),encoding: encoding);
+          Response res = await delete(uri,headers: headers,body: jsonBody,encoding: encoding);
           if(isSuccessfulResponse(res,successCodes)) {
             return NetworkResponse(response: res);
           } else {
@@ -612,7 +618,7 @@ class NetworkRepositoryImpl extends NetworkRepository {
         }
       case RequestType.patch:
         try {
-          Response res = await patch(uri,headers: headers,body: body ?? jsonEncode(body),encoding: encoding);
+          Response res = await patch(uri,headers: headers,body: jsonBody, encoding: encoding);
           if(isSuccessfulResponse(res,successCodes)) {
             return NetworkResponse(response: res);
           } else {
