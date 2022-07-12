@@ -1,0 +1,10 @@
+^D:\PROJECTS\FLUTTER\FLUTTER_BRICK\BRICKS\FLUTTER_BRICK\__BRICK__\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/windows -BD:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows --check-stamp-file D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

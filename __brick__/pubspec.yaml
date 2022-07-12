@@ -1,4 +1,4 @@
-name: bruce_brick
+name: flutter_brick
 description: Brick project of my boilerplate code
 publish_to: none
 version: 1.0.0+1
@@ -41,13 +41,15 @@ dev_dependencies:
   msix: ^3.6.2
   flutter_lints: ^2.0.1
   build_runner: ^2.1.11
+  http_mock_adapter: ^0.3.1
+  mockito: ^5.1.0
 flutter_icons:
   android: true
   windows: true
   ios: true # can specify file name here e.g. "My-Launcher-Icon"
   macOs: true
   remove_alpha_ios: true
-  image_path: "assets/icon.png"
+  image_path: "icon/icon.png"
   #adaptive_icon_background: "#FFFFFF" # can use image / color only available for Android 8.0 devices and above
   #adaptive_icon_foreground: "assets/images/icon-foreground-432x432.png" # only available for Android 8.0 devices and above
   #image_path_android: "assets/images/icon-710x599-android.png"
@@ -71,13 +73,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-    - assets/icon/
   #fonts:
 msix_config:
-  display_name: $name
-  publisher_display_name: $name
-  publisher: $name
-  identity_name: $name
+  display_name: flutter_brick
+  publisher_display_name: flutter_brick
+  publisher: flutter_brick
+  identity_name: 'flutter.brick'
   msix_version: 1.0.0.0
   icons_background_color: "#ffffff"
   architecture: x64

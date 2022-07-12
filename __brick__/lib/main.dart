@@ -1,6 +1,6 @@
-import 'package:bruce_brick/data/db.dart';
-import 'package:bruce_brick/data/network.dart';
-import 'package:bruce_brick/utils/reusables.dart';
+import 'package:flutter_brick/data/db.dart';
+import 'package:flutter_brick/data/network.dart';
+import 'package:flutter_brick/utils/reusables.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -12,16 +12,6 @@ import 'utils/url/url_strategy.dart';
 
 Logger _log = Logger('main.dart');
 final getIt = GetIt.instance;
-
-void main() {
-  _beforeRunApp()
-      .then((value) => runApp(const MyApp()))
-      .catchError((onError) {
-        debugPrint(onError.toString());
-        print("Application failed to start");
-        MyMethods.killApp();
-  });
-}
 
 Future<void> _beforeRunApp() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,6 +41,16 @@ void _handleLogs(LogRecord record) {
   debugPrint('${record.level.name}: ${record.time}: ''${record.loggerName}: ''${record.message}');
 }
 
+void main() {
+  _beforeRunApp()
+      .then((value) => runApp(const MyApp()))
+      .catchError((onError) {
+    debugPrint(onError.toString());
+    print("Application failed to start");
+    MyMethods.killApp();
+  });
+}
+
 class MyApp extends StatelessWidget {
 
   const MyApp({super.key});
@@ -77,32 +77,6 @@ class MyApp extends StatelessWidget {
                 );
               }
           );
-          /*return FutureBuilder(
-              future: openHiveBox(),
-              builder: (__,AsyncSnapshot<void> hiveSnapshot) {
-                if(hiveSnapshot.connectionState == ConnectionState.done) {
-                  return ValueListenableBuilder(
-                      valueListenable: _theme,
-                      builder: (__,MyThemeModes themeMode, _) {
-                        return MaterialApp(
-                          key: key,
-                          title: MyVariables.appName,
-                          initialRoute: MyVariables.splashScreenRoute,
-                          onUnknownRoute: (settings) => MaterialPageRoute(builder: (_) => const UnKnownPage()),
-                          onGenerateRoute: (settings) => Routes.onGenerateRoute(settings),
-                          scrollBehavior: MyWidgets.getNoScrollBehaviour(context),
-                          useInheritedMediaQuery: true,
-                          _theme: themeMode.data,
-                        );
-                      }
-                  );
-                } else {
-                  return Container(
-                    child: MyWidgets.getRingKit(snapshot: hiveSnapshot),
-                  );
-                }
-              }
-            );*/
         }
     );
   }

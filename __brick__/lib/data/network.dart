@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:bruce_brick/utils/exceptions/exceptions.dart';
+import 'package:flutter_brick/utils/exceptions/exceptions.dart';
 import 'package:http/http.dart';
 import 'dart:io';
 

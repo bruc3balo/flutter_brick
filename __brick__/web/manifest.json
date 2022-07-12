@@ -1,6 +1,6 @@
 {
-    "name": "bruce_brick",
-    "short_name": "bruce_brick",
+    "name": "flutter_brick",
+    "short_name": "flutter_brick",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

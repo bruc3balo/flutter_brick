@@ -1,5 +1,5 @@
 //exceptions
-import 'package:bruce_brick/data/network.dart';
+import 'package:flutter_brick/data/network.dart';
 import 'package:http/http.dart';
 
 class ConnectionException implements Exception {

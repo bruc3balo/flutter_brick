@@ -1,0 +1,4 @@
+#Tue Jul 12 02:36:06 EAT 2022
+base.0=D\:\\Projects\\flutter\\flutter_brick\\bricks\\flutter_brick\\__brick__\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

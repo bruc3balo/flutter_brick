@@ -122,6 +122,10 @@ decimal
 2.14
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/decimal-2.2.0/
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/decimal-2.2.0/lib/
+dio
+2.12
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6/
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6/lib/
 equatable
 2.12
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/equatable-2.0.3/
@@ -194,6 +198,10 @@ http
 2.14
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.4/
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.4/lib/
+http_mock_adapter
+2.12
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/http_mock_adapter-0.3.3/
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/http_mock_adapter-0.3.3/lib/
 http_multi_server
 2.12
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/http_multi_server-3.2.1/
@@ -254,6 +262,10 @@ mime
 2.12
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/mime-1.0.2/
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/mime-1.0.2/lib/
+mockito
+2.12
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/mockito-5.2.0/
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/mockito-5.2.0/lib/
 msix
 2.12
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/msix-3.6.2/
@@ -438,7 +450,7 @@ flutter_web_plugins
 2.17
 file:///C:/tools/flutter/packages/flutter_web_plugins/
 file:///C:/tools/flutter/packages/flutter_web_plugins/lib/
-bruce_brick
+flutter_brick
 2.17
 file:///D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/
 file:///D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/lib/

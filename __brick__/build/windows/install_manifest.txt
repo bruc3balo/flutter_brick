@@ -1,0 +1,11 @@
+D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows/runner/Release/data/icudtl.dat
+D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows/runner/Release/flutter_windows.dll
+D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows/runner/Release/data/flutter_assets/AssetManifest.json
+D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows/runner/Release/data/flutter_assets/assets/icon.png
+D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows/runner/Release/data/flutter_assets/FontManifest.json
+D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows/runner/Release/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows/runner/Release/data/flutter_assets/NOTICES
+D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows/runner/Release/data/flutter_assets/NOTICES.Z
+D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows/runner/Release/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows/runner/Release/data/flutter_assets/shaders/ink_sparkle.frag
+D:/Projects/flutter/flutter_brick/bricks/flutter_brick/__brick__/build/windows/runner/Release/data/app.so

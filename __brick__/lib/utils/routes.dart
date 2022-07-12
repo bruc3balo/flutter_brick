@@ -1,5 +1,5 @@
-import 'package:bruce_brick/pages/home_page.dart';
-import 'package:bruce_brick/utils/reusables.dart';
+import 'package:flutter_brick/pages/home_page.dart';
+import 'package:flutter_brick/utils/reusables.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -68,7 +68,6 @@ class Routes {
     return null;
   }
 }
-
 
 class UnKnownPage extends StatelessWidget {
   const UnKnownPage({Key? key}) : super(key: key);

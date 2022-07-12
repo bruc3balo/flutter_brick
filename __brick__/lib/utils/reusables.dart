@@ -1,4 +1,4 @@
-import 'package:bruce_brick/utils/mplatform.dart';
+import 'package:flutter_brick/utils/mplatform.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:universal_html/html.dart' as html;

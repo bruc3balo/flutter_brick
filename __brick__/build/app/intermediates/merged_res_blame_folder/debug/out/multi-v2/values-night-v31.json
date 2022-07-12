@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\Projects\\flutter\\flutter_brick\\bricks\\flutter_brick\\__brick__\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v31\\values-night-v31.xml",
+            "map": [
+                {
+                    "source": "D:\\Projects\\flutter\\flutter_brick\\bricks\\flutter_brick\\__brick__\\android\\app\\src\\main\\res\\values-night-v31\\styles.xml",
+                    "from": {
+                        "startLines": "3,18",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,1142",
+                        "endLines": "11,20",
+                        "endColumns": "12,12",
+                        "endOffsets": "791,1306"
+                    },
+                    "to": {
+                        "startLines": "2,11",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,678",
+                        "endLines": "10,13",
+                        "endColumns": "12,12",
+                        "endOffsets": "673,842"
+                    }
+                }
+            ]
+        }
+    ]
+}

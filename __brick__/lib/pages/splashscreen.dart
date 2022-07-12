@@ -1,5 +1,5 @@
-import 'package:bruce_brick/utils/reusables.dart';
-import 'package:bruce_brick/utils/styles/styles.dart';
+import 'package:flutter_brick/utils/reusables.dart';
+import 'package:flutter_brick/utils/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/routes.dart';

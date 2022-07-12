@@ -188,6 +188,12 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "dio",
+      "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "equatable",
       "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/equatable-2.0.3",
       "packageUri": "lib/",
@@ -314,6 +320,12 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "http_mock_adapter",
+      "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/http_mock_adapter-0.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "http_multi_server",
       "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/http_multi_server-3.2.1",
       "packageUri": "lib/",
@@ -400,6 +412,12 @@
     {
       "name": "mime",
       "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/mime-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "mockito",
+      "rootUri": "file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/mockito-5.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -662,13 +680,13 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "bruce_brick",
+      "name": "flutter_brick",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-07-11T19:11:19.915928Z",
+  "generated": "2022-07-12T00:29:12.068646Z",
   "generator": "pub",
   "generatorVersion": "2.18.0-190.0.dev"
 }

@@ -1,6 +1,6 @@
-import 'package:bruce_brick/utils/exceptions/exceptions.dart';
-import 'package:bruce_brick/utils/mplatform.dart';
-import 'package:bruce_brick/utils/reusables.dart';
+import 'package:flutter_brick/utils/exceptions/exceptions.dart';
+import 'package:flutter_brick/utils/mplatform.dart';
+import 'package:flutter_brick/utils/reusables.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
