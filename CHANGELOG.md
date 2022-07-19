@@ -21,6 +21,7 @@ This version involves the following dependencies
   * google_fonts: ^2.3.1
   * equatable: ^2.0.3
   * get_it: ^7.2.0
+  * universal_io: ^2.0.4
 
 It also includes the following dev dependencies
   * msix: ^3.6.2
