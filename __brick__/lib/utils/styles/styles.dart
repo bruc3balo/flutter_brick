@@ -131,9 +131,7 @@ class ScreenSize extends ValueNotifier<Size> {
   ScreenSizeEnums get currentSize => ScreenSizeEnums.current(value.width);
 
   void updateSize ({required double width, required double height}) {
-    debugPrint("Size is updating");
     value = Size(width, height);
-    debugPrint("Width is ${value.width}");
   }
 
 }

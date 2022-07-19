@@ -1,8 +1,12 @@
 import 'dart:convert';
 
-import 'package:flutter_brick/utils/exceptions/exceptions.dart';
+import '../utils/exceptions/exceptions.dart';
 import 'package:http/http.dart';
-import 'dart:io';
+import 'package:logging/logging.dart';
+import 'package:universal_io/io.dart' as io;
+
+Logger _log = Logger('network.dart');
+
 
 enum RequestType {
   get,post,put,delete,head,patch;
@@ -521,7 +525,8 @@ class NetworkResponse {
   NetworkResponse({this.response, this.failure}) {
    if(!hasFailure() && !hasResponse()) {
      throw IllegalStateFailure("Response and Failure cannot both be null");
-   } 
+   }
+
   }
   
   bool hasFailure () {
@@ -542,9 +547,20 @@ abstract class NetworkRepository {
 
 class NetworkRepositoryImpl extends NetworkRepository {
 
+  late String testLookUpAddress;
+  late int successTestLookUpStatus;
+  List<HttpStatusCodes>? universalSuccessCodes;
+
+  NetworkRepositoryImpl({String? lookUpAddress, int? successLookUpStatus,List<HttpStatusCodes>? universalSuccessCodes}) {
+    this.testLookUpAddress = lookUpAddress ?? "https://httpbin.org/ip";
+    this.successTestLookUpStatus = successLookUpStatus ?? 200;
+    this.universalSuccessCodes = universalSuccessCodes;
+  }
+
   @override
   Future<NetworkResponse> sendRequest(Uri uri, RequestType requestType, {Map<String,String>? headers, Object? body,List<HttpStatusCodes>? successCodes,Encoding? encoding}) async {
     if(!(await hasConnection())) {
+      _log.info("Internet connection test failed");
       return NetworkResponse(failure: ConnectionFailure(null));
     }
 
@@ -565,7 +581,7 @@ class NetworkRepositoryImpl extends NetworkRepository {
            HttpStatusCodes? httpStatusCodes = HttpStatusCodes.findByCode(res.statusCode);
            return NetworkResponse(failure: ServerFailure.fromHttpStatusCode(httpStatusCodes, res));
          }
-        } on SocketException catch(e) {
+        } on io.SocketException catch(e) {
           return NetworkResponse(failure: ConnectionFailure(e.message, sent: true));
         }
       case RequestType.post:
@@ -577,7 +593,7 @@ class NetworkRepositoryImpl extends NetworkRepository {
             HttpStatusCodes? httpStatusCodes = HttpStatusCodes.findByCode(res.statusCode);
             return NetworkResponse(failure: ServerFailure.fromHttpStatusCode(httpStatusCodes, res));
           }
-        } on SocketException catch(e) {
+        } on io.SocketException catch(e) {
           return NetworkResponse(failure: ConnectionFailure(e.message, sent: true));
         }
       case RequestType.put:
@@ -589,7 +605,7 @@ class NetworkRepositoryImpl extends NetworkRepository {
             HttpStatusCodes? httpStatusCodes = HttpStatusCodes.findByCode(res.statusCode);
             return NetworkResponse(failure: ServerFailure.fromHttpStatusCode(httpStatusCodes, res));
           }
-        } on SocketException catch(e) {
+        } on io.SocketException catch(e) {
           return NetworkResponse(failure: ConnectionFailure(e.message, sent: true));
         }
       case RequestType.delete:
@@ -601,7 +617,7 @@ class NetworkRepositoryImpl extends NetworkRepository {
             HttpStatusCodes? httpStatusCodes = HttpStatusCodes.findByCode(res.statusCode);
             return NetworkResponse(failure: ServerFailure.fromHttpStatusCode(httpStatusCodes, res));
           }
-        } on SocketException catch(e) {
+        } on io.SocketException catch(e) {
           return NetworkResponse(failure: ConnectionFailure(e.message, sent: true));
         }
       case RequestType.head:
@@ -613,7 +629,7 @@ class NetworkRepositoryImpl extends NetworkRepository {
             HttpStatusCodes? httpStatusCodes = HttpStatusCodes.findByCode(res.statusCode);
             return NetworkResponse(failure: ServerFailure.fromHttpStatusCode(httpStatusCodes, res));
           }
-        } on SocketException catch(e) {
+        } on io.SocketException catch(e) {
           return NetworkResponse(failure: ConnectionFailure(e.message, sent: true));
         }
       case RequestType.patch:
@@ -625,7 +641,7 @@ class NetworkRepositoryImpl extends NetworkRepository {
             HttpStatusCodes? httpStatusCodes = HttpStatusCodes.findByCode(res.statusCode);
             return NetworkResponse(failure: ServerFailure.fromHttpStatusCode(httpStatusCodes, res));
           }
-        } on SocketException catch(e) {
+        } on io.SocketException catch(e) {
           return NetworkResponse(failure: ConnectionFailure(e.message, sent: true));
         }
     }
@@ -633,23 +649,37 @@ class NetworkRepositoryImpl extends NetworkRepository {
 
   @override
   Future<bool> hasConnection () async {
-    try {
-      //todo change for your app
-      final result = await InternetAddress.lookup('google.com');
+    //todo change implementation for your app
+    /*try {
+      final result = await io.InternetAddress.lookup(lookUpAddress);
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
         return true;
       }
       return false;
-    } on SocketException catch (_) {
+    } on io.SocketException catch (_) {
+      return false;
+    } catch (e,trace) {
+      //web throws unimplemented exception
+      return false;
+    }*/
+    try {
+      Response? test = await get(Uri.parse(testLookUpAddress));
+      return test.statusCode == successTestLookUpStatus;
+    } catch(e) {
       return false;
     }
   }
 
   @override
-  bool isSuccessfulResponse(Response response,List<HttpStatusCodes>? successCodes) {
+  bool isSuccessfulResponse(Response response, List<HttpStatusCodes>? successCodes) {
     if(successCodes != null) {
       return successCodes.map((e) => e.status).contains(response.statusCode);
     }
+
+    if (universalSuccessCodes != null) {
+      return universalSuccessCodes!.map((e) => e.status).contains(response.statusCode);
+    }
+
     //default
     //todo change for your app
     return (response.statusCode >= 200 && response.statusCode < 300);

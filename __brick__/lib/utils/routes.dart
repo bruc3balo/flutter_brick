@@ -1,5 +1,5 @@
-import 'package:flutter_brick/pages/home_page.dart';
-import 'package:flutter_brick/utils/reusables.dart';
+import '../pages/home_page.dart';
+import '../utils/reusables.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 

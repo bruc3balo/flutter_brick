@@ -1,6 +1,11 @@
 //exceptions
-import 'package:flutter_brick/data/network.dart';
+
+import '/data/network.dart' hide Logger;
 import 'package:http/http.dart';
+import 'package:logging/logging.dart';
+
+Logger _log = Logger('exceptions.dart');
+
 
 class ConnectionException implements Exception {
 
@@ -19,19 +24,26 @@ abstract class Failure {
 }
 
 class ConnectionFailure extends Failure {
-  bool? sent;
-  ConnectionFailure(String? message,{this.sent}) : super (message ?? "Internet connection unavailable") {
+  late bool sent;
+  ConnectionFailure(String? message,{bool? sent}) : super (message ?? "Internet connection unavailable") {
     sent = sent ?? false;
+    if(!sent) {
+      _log.info(message);
+    }
   }
 }
 
 class DatabaseFailure extends Failure {
-  const DatabaseFailure(String message) : super(message);
+   DatabaseFailure(String message) : super(message) {
+    _log.warning(message);
+  }
 }
 
 class ServerFailure extends Failure {
   int status;
-  ServerFailure({required String message,required this.status}) : super(message);
+  ServerFailure({required String message,required this.status}) : super(message) {
+    _log.warning(message);
+  }
 
   static ServerFailure fromHttpStatusCode(HttpStatusCodes? httpStatusCodes,Response response) {
     return ServerFailure(message:httpStatusCodes?.phrase ?? "Failed", status: httpStatusCodes?.status ?? response.statusCode);
@@ -39,6 +51,8 @@ class ServerFailure extends Failure {
 }
 
 class IllegalStateFailure extends Failure {
-  const IllegalStateFailure(String message) : super(message);
+   IllegalStateFailure(String message) : super(message) {
+    _log.warning(message);
+  }
 }
 

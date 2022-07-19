@@ -1,14 +1,14 @@
-import 'package:flutter_brick/data/db.dart';
-import 'package:flutter_brick/data/network.dart';
-import 'package:flutter_brick/utils/reusables.dart';
+import '../data/db.dart';
+import '../data/network.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import '../utils/reusables.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:logging/logging.dart';
-import 'utils/routes.dart';
-import 'utils/styles/styles.dart';
-import 'utils/url/url_strategy.dart';
+import '../utils/routes.dart';
+import '../utils/styles/styles.dart';
+import '../utils/url/url_strategy.dart';
 
 Logger _log = Logger('main.dart');
 final getIt = GetIt.instance;
@@ -34,6 +34,7 @@ Future<void> _beforeRunApp() async {
 
   //network
   getIt.registerLazySingleton<NetworkRepository>(() => NetworkRepositoryImpl());
+  //getIt<NetworkRepository>(); //use network repository implementation
 }
 
 void _handleLogs(LogRecord record) {
@@ -63,7 +64,6 @@ class MyApp extends StatelessWidget {
           return ValueListenableBuilder(
               valueListenable: themeProvider,
               builder: (__,MyThemeModes themeMode, _) {
-                debugPrint("${themeMode.name}");
                 return MaterialApp(
                   key: key,
                   title: MyVariables.appName,

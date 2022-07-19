@@ -1,8 +1,12 @@
-import 'package:flutter_brick/utils/exceptions/exceptions.dart';
-import 'package:flutter_brick/utils/mplatform.dart';
-import 'package:flutter_brick/utils/reusables.dart';
+import '../utils/exceptions/exceptions.dart';
+import '../utils/mplatform.dart';
+import '../utils/reusables.dart';
 import 'package:hive/hive.dart';
+import 'package:logging/logging.dart';
 import 'package:path_provider/path_provider.dart';
+
+Logger _log = Logger('db.dart');
+
 
 abstract class LocalDatabase {
   Future<void> clearAllData();
@@ -21,6 +25,7 @@ class LocalDataBaseImpl extends LocalDatabase {
       //todo add all boxes here
       Box? box = await _getHiveBox();
       box?.clear();
+      _log.info("Database cleared");
     } catch (e) {
       throw DatabaseFailure(e.toString());
     }
